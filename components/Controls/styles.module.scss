@@ -1,0 +1,45 @@
+.controls_wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  color: black;
+
+  & button {
+    background-color: #ffe600;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & > button:nth-child(2) {
+    width: 96px;
+    height: 96px;
+  }
+  & button[data-recognized="true"] {
+    opacity: 0.3;
+  }
+}
+.info_share {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  & button {
+    width: 48px;
+    height: 48px;
+  }
+
+  & button:nth-child(2) {
+    margin-left: -24px;
+  }
+
+  & button[data-disabled="true"] {
+    opacity: 0.3;
+    
+  }
+}

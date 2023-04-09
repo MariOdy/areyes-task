@@ -1,0 +1,22 @@
+.cameraPreview_wrapper {
+  aspect-ratio: 4 / 5;
+  width: 390px;
+  border-radius: 30px;
+  overflow: hidden;
+
+  border: 2px solid white;
+  & video {
+    height: 100%;
+    object-fit: cover;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg); /* Safari and Chrome */
+    -moz-transform: rotateY(180deg); /* Firefox */
+  }
+  & img {
+    height: 100%;
+    object-fit: cover;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg); /* Safari and Chrome */
+    -moz-transform: rotateY(180deg); /* Firefox */
+  }
+}
