@@ -1,52 +1,49 @@
 import React, { useState } from "react";
 
-import Info from "@/public/Info";
-import Recognition from "@/public/Recognition";
+
+import Info from "@/public/svg/Info";
+import Share from "@/public/svg/Share";
+import Reload from "@/public/svg/Reload";
+import Capture from "@/public/svg/Capture";
+import Recognition from "@/public/svg/Recognition";
 
 import styles from "./styles.module.scss";
-import Reload from "@/public/Reload";
-import Capture from "@/public/Capture";
-import Share from "@/public/Share";
-
 interface ControlsProps {
-  onClick: () => void;
-  label: "reset" | "capture";
+  handleReset: () => void;
+  handleCapture: () => void;
+  handleInfo: () => void;
+  handleRecognition: () => void;
+  countPhoto: number;
+  picture: string | null;
 }
 
-const Controls: React.FC<ControlsProps> = ({ onClick, label }) => {
-  const [recognized, setRecognized] = useState<boolean>(false);
-  const [disabled, setDisabled] = useState<boolean>(false);
-
-  const handleRecognition = () => {
-    setRecognized((prev) => !prev);
-    setDisabled((prev) => !prev);
-  };
-
-  const handleShare = () => {
-    if (disabled) {
-      alert(`you can't share in recognition mode`);
-      return null;
-    }
-    return alert("share");
-  };
+const Controls: React.FC<ControlsProps> = ({
+  handleReset,
+  handleCapture,
+  handleInfo,
+  handleRecognition,
+  countPhoto,
+  picture,
+}) => {
+  const handleShare = () => {};
 
   return (
     <div className={styles.controls_wrapper}>
-      <button
-        type="button"
-        onClick={handleRecognition}
-        data-recognized={recognized}
-      >
+      <button type="button" onClick={handleRecognition}>
         <Recognition />
       </button>
-      <button onClick={onClick} type="button">
-        {label === "reset" ? <Reload /> : <Capture />}
-      </button>
+      <div className={styles.main_btn}>
+        <div>{countPhoto}/3</div>
+        <button type="button" onClick={picture ? handleReset : handleCapture}>
+          {picture ? <Reload /> : <Capture />}
+        </button>
+      </div>
+
       <div className={styles.info_share}>
-        <button type="button" data-disabled={disabled} onClick={handleShare}>
+        <button type="button" onClick={handleShare}>
           <Share />
         </button>
-        <button>
+        <button type="button" onClick={handleInfo}>
           <Info />
         </button>
       </div>

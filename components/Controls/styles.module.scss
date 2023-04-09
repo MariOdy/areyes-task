@@ -3,8 +3,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30px;
+  padding: 0px 30px;
   color: black;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 120px;
+  }
 
   & button {
     background-color: #ffe600;
@@ -16,19 +22,21 @@
     align-items: center;
     justify-content: center;
   }
+}
+.main_btn {
+  align-items: center;
+  color: #ffe600;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: bold;
 
-  & > button:nth-child(2) {
+  & button {
     width: 96px;
     height: 96px;
   }
-  & button[data-recognized="true"] {
-    opacity: 0.3;
-  }
 }
 .info_share {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  padding-top: 8px;
   & button {
     width: 48px;
     height: 48px;
@@ -37,9 +45,6 @@
   & button:nth-child(2) {
     margin-left: -24px;
   }
-
-  & button[data-disabled="true"] {
-    opacity: 0.3;
-    
-  }
 }
+
+
