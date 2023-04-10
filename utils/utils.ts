@@ -7,8 +7,8 @@ export const videoToDataURL = (videoElement: HTMLVideoElement): string => {
   const canvas = document.createElement("CANVAS") as HTMLCanvasElement;
 
   // Set a fixed size for the canvas element
-  canvas.width = 640;
-  canvas.height = 480;
+  canvas.width = 420;
+  canvas.height = 525;
 
   const context = canvas.getContext("2d");
 
