@@ -19,12 +19,10 @@ const WorkArea = () => {
   return (
     <div className={styles.workArea}>
       <div ref={workAreaRef} className={styles.area}>
-        {showPreview && lastScreenshot ? (
-          // Show preview of the last taken image
+        <CameraPreview />
+        {/* Show preview of the last taken image */}
+        {showPreview && lastScreenshot && (
           <PhotoPreview imageSrc={lastScreenshot} />
-        ) : (
-          // Show live preview of the webcam
-          <CameraPreview />
         )}
         <InfoCover />
         <RecognitionCover />

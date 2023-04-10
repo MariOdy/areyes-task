@@ -6,19 +6,14 @@ export const videoToDataURL = (videoElement: HTMLVideoElement): string => {
   // Create canvas element to store the screenshot
   const canvas = document.createElement("CANVAS") as HTMLCanvasElement;
 
-  // Set a fixed size for the canvas element
-  canvas.width = 420;
-  canvas.height = 525;
+  canvas.width = videoElement.videoWidth;
+  canvas.height = videoElement.videoHeight;
 
   const context = canvas.getContext("2d");
 
   if (!context) {
     throw new Error("Failed to get a 2d context");
   }
-
-  // Set the size of the video element to match the canvas element's size
-  videoElement.width = canvas.width;
-  videoElement.height = canvas.height;
 
   // Save video data to the canvas
   context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
