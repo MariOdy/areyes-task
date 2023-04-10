@@ -18,10 +18,15 @@ const CameraPreview: React.FC = () => {
 
     try {
       // Access the user's camera using WebRTC
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-        audio: false,
-      });
+      const constraints: MediaStreamConstraints = {
+        video: {
+          width: { ideal: 420 },
+          height: { ideal: 525 },
+          aspectRatio: { ideal: 0.8 },
+          facingMode: { ideal: "environment" },
+        },
+      };
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
 
       videoRef.current.srcObject = stream;
     } catch (err) {
