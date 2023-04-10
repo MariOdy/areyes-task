@@ -17,7 +17,7 @@ export const videoToDataURL = (videoElement: HTMLVideoElement): string => {
 
   // Save video data to the canvas
   context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-  const dataUrl = canvas.toDataURL("image/png");
+  const dataUrl = canvas.toDataURL("image/jpeg");
 
   // Clearup created context
   canvas.remove();
@@ -29,11 +29,25 @@ export const videoToDataURL = (videoElement: HTMLVideoElement): string => {
 export const sharePictures = async (pictures: string[]) => {
   if (!Array.isArray(pictures) || pictures.length === 0) return;
 
-  // Convert array of pictures to 'File' format
-  const filesArray = pictures.map(
-    (image) =>
-      new File([image], "meme.png", {
-        type: "image/png",
+  if (typeof navigator.share !== "function") {
+    console.warn("Sharing is not available");
+    return;
+  }
+
+  // Convert array of base64 strings to Blob objects
+  const blobArray = await Promise.all(
+    pictures.map(async (base64String) => {
+      const response = await fetch(base64String);
+      const blob = await response.blob();
+      return blob;
+    })
+  );
+
+  // Convert array of Blob objects to File objects
+  const filesArray = blobArray.map(
+    (blob, index) =>
+      new File([blob], `me_${index}.jpg`, {
+        type: "image/jpeg",
         lastModified: new Date().getTime(),
       })
   );
