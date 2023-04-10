@@ -23,7 +23,7 @@ const CameraPreview: React.FC = () => {
           width: { ideal: 420 },
           height: { ideal: 525 },
           aspectRatio: { ideal: 0.8 },
-          facingMode: { ideal: "environment" },
+          facingMode: { ideal: "user" },
         },
       };
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
