@@ -1,10 +1,14 @@
 .controls_wrapper {
+  color: #ffe600;
+
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 30px;
-  color: black;
+  padding: 10px 30px 40px;
+
+  flex: 0 0 auto;
+
   & > div {
     display: flex;
     flex-direction: column;
@@ -13,38 +17,56 @@
   }
 
   & button {
+    --size: 64px;
+
     background-color: #ffe600;
+    color: black;
     border-radius: 50%;
-    width: 64px;
-    height: 64px;
+    width: var(--size);
+    height: var(--size);
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: 0.3s ease;
+    transition-property: opacity, scale;
+
+    &:hover,
+    &:focus-visible {
+      scale: 1.05;
+    }
+
+    &:active {
+      scale: 0.95;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+    }
   }
 }
+
 .main_btn {
   align-items: center;
-  color: #ffe600;
+
   font-size: 16px;
   line-height: 19px;
   font-weight: bold;
 
   & button {
-    width: 96px;
-    height: 96px;
+    --size: 96px;
   }
 }
+
 .info_share {
   padding-top: 8px;
+
   & button {
-    width: 48px;
-    height: 48px;
+    --size: 48px;
   }
 
   & button:nth-child(2) {
     margin-left: -24px;
   }
 }
-
-

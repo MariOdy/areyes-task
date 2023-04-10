@@ -1,9 +1,9 @@
-import CameraIterface from "@/components/CameraInterface";
+import CameraStudio from "@/components/CameraStudio";
 
-export default function Home() {
-  return (
-    <main>
-      <CameraIterface />
-    </main>
-  );
-}
+const Home = () => (
+  <main>
+    <CameraStudio />
+  </main>
+);
+
+export default Home;

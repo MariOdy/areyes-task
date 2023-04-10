@@ -6,7 +6,10 @@ interface PhotoPreviewProps {
 }
 
 const PhotoPreview: React.FC<PhotoPreviewProps> = ({ imageSrc }) => {
-  return <Image src={imageSrc} alt="my photo" width={390} height={488} />;
+  if (!imageSrc) return null;
+  return (
+    <Image src={imageSrc} fill alt="Taken picture" className="photoPreview" />
+  );
 };
 
 export default PhotoPreview;

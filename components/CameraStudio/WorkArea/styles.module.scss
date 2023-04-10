@@ -1,0 +1,67 @@
+// Container
+.workArea {
+  display: flex;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+// Working Area
+.area {
+  aspect-ratio: 4 / 5;
+  background: gray;
+
+  flex: 1 1 auto;
+  margin: auto;
+
+  border-radius: 30px;
+  overflow: hidden;
+
+  position: relative;
+  z-index: 0;
+
+  max-height: 100%;
+  max-width: 100%;
+
+  & video,
+  & img {
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  // Hide faceRecognition if info or photo preview is displayed
+  &:has(:is(:global(.infoContainer), :global(.photoPreview)))
+    :global(.faceRecognition) {
+    display: none;
+  }
+}
+
+// Infinite rotation
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
+// Loading spinner
+.spinner {
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  display: flex;
+
+  & > svg {
+    color: #ffe600;
+    margin: auto;
+    transform-origin: center;
+    animation: rotate 4s linear infinite;
+    height: 96px;
+    width: 96px;
+  }
+}
